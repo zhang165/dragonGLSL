@@ -15,9 +15,9 @@ void main() {
 	}else{
 		color = vec4(0.2, 0.2, 0.7, 1);
 	}
-	
+
 	if(rcState==4){
-		gl_FragColor = vec4(normalize(interpolatedNormal), 1.0);
+		gl_FragColor = dist >= auraDist?vec4(normalize(interpolatedNormal), 1.0): vec4(normalize(interpolatedNormal), 1.0) - vec4(-0.2, -0.2, -0.2, 0.0);
 	}else{
   		gl_FragColor = dist >= auraDist? vec4(normalize(interpolatedNormal), 1.0): color; 
   }
