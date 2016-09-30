@@ -23,11 +23,9 @@ void main() {
 
     interpolatedNormal = normal;
     vec3 truePosition = position * vec3(6.0) + vec3(0.0, 0.8, 0.0);
-    vec3 trueRemotePosition = remotePosition * vec3(0.36) + vec3(0, -1.1, 0);
-
-    dist = distance(modelMatrix * vec4(truePosition,1.0), modelMatrix * vec4(trueRemotePosition,1.0));
-
-	mat4 rotation = rotationMatrix(trueRemotePosition, times);
+    dist = distance(modelMatrix * vec4(truePosition,1.0), vec4(remotePosition,1.0));
+    
+	mat4 rotation = rotationMatrix(remotePosition, times);
     vec3 deformedPosition = dist>=3.0? truePosition: truePosition - vec3(0.16)*vec3(fract(dist+times));
 
     gl_Position = rcState!=4? projectionMatrix * modelViewMatrix * vec4(truePosition, 1.0): projectionMatrix * modelViewMatrix * rotation * vec4(deformedPosition, 1.0);
