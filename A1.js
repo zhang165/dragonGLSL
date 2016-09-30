@@ -58,17 +58,23 @@ floor.parent = worldFrame;
 var remotePosition = {type: 'v3', value: new THREE.Vector3(0,0,0)};
 var rcState = {type: 'i', value: 1};
 
+// Time
+var start = Date.now();
+var times = {type: 'f', value: 0.0};
+
 // MATERIALS
 var dragonMaterial = new THREE.ShaderMaterial({
    uniforms: {
     remotePosition: remotePosition,
     rcState: rcState,
+    times: times,
   },
 });
 var remoteMaterial = new THREE.ShaderMaterial({
    uniforms: {
     remotePosition: remotePosition,
     rcState: rcState,
+    times: times,
   },
 });
 
@@ -147,7 +153,7 @@ function checkKeyboard() {
   else if (keyboard.pressed("D"))
     remotePosition.value.y -= 0.1;
 
-  for (var i=1; i<4; i++)
+  for (var i=1; i<=4; i++)
   {
     if (keyboard.pressed(i.toString()))
     {
@@ -165,6 +171,7 @@ function update() {
   checkKeyboard();
   requestAnimationFrame(update);
   renderer.render(scene, camera);
+  times.value = 0.00025*(Date.now()-start);
 }
 
 update();

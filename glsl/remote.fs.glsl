@@ -6,7 +6,9 @@ void main() {
 		gl_FragColor = vec4(1, 0, 0, 1);
 	}else if(rcState==2){
 		gl_FragColor = vec4(0, 1, 0, 1);
-	}else{
+	}else if(rcState==2){
 		gl_FragColor = vec4(0, 0, 1, 1);
+	}else{
+		gl_FragColor = vec4(0, 0.8, 0.9, 1);
 	}
 }
