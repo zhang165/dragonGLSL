@@ -55,13 +55,14 @@ scene.add(floor);
 floor.parent = worldFrame;
 
 // UNIFORMS
-var remotePosition = {type: 'v3', value: new THREE.Vector3(0,5,3)};
+var remotePosition = {type: 'v3', value: new THREE.Vector3(0,0,0)};
 var rcState = {type: 'i', value: 1};
 
 // MATERIALS
 var dragonMaterial = new THREE.ShaderMaterial({
    uniforms: {
     remotePosition: remotePosition,
+    rcState: rcState,
   },
 });
 var remoteMaterial = new THREE.ShaderMaterial({
